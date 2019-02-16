@@ -7,6 +7,11 @@
     <ItemGroup>
       <Folder Include="Dictionary\Command" />
       <Folder Include="Dictionary\Query" />
+      <Folder Include="Word\Command" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VocaPower.Domain\VocaPower.Domain.csproj" />
     </ItemGroup>
 
 </Project>
