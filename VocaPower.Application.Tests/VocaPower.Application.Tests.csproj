@@ -16,6 +16,7 @@
     <ItemGroup>
       <ProjectReference Include="..\VocaPower.Application\VocaPower.Application.csproj" />
       <ProjectReference Include="..\VocaPower.Domain\VocaPower.Domain.csproj" />
+      <ProjectReference Include="..\VocaPower.Infrastructure\VocaPower.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
