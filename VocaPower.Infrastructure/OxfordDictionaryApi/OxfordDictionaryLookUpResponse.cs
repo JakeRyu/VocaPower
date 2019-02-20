@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace VocaPower.Infrastructure.OxfordDictionaryApi
 {
-    public class OxfordDictionaryLookUpResult
+    public class OxfordDictionaryLookUpResponse
     {
         public Metadata Metadata { get; set; }
         public List<Result> Results { get; set; }
@@ -15,15 +15,17 @@ namespace VocaPower.Infrastructure.OxfordDictionaryApi
         public string Type { get; set; }
         public string Word { get; set; }
         public List<LexicalEntry> LexicalEntries { get; set; }
+        
+        public class LexicalEntry
+        {
+            public string Language { get; set; }
+            public string LexicalCategory { get; set; }
+            public string Text { get; set; }
+            public List<Entry> Entries { get; set; }
+        }
     }
 
-    public class LexicalEntry
-    {
-        public string Language { get; set; }
-        public string LexicalCategory { get; set; }
-        public string Text { get; set; }
-        public List<Entry> Entries { get; set; }
-    }
+
 
     public class Entry
     {

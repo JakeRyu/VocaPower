@@ -1,6 +1,8 @@
+using AutoMapper;
 using RestSharp;
 using VocaPower.Application.Interface;
 using VocaPower.Domain.Entities;
+using VocaPower.Infrastructure.Infrastructure;
 
 namespace VocaPower.Infrastructure.OxfordDictionaryApi
 {
@@ -62,6 +64,15 @@ namespace VocaPower.Infrastructure.OxfordDictionaryApi
 
         }
 
+        IMapper _mapper;
+
+        public OxfordDictionaryApiClient()
+        {
+            var config = new MapperConfiguration(cfg => {
+                cfg.AddProfile<InfrastructureProfile>();
+            });
+            _mapper = config.CreateMapper();
+        }
         public WordEntry LookUp(string word)
         {
             var client = new RestClient("https://od-api.oxforddictionaries.com/api/v1");
@@ -73,9 +84,10 @@ namespace VocaPower.Infrastructure.OxfordDictionaryApi
             request.AddHeader("app_key", "0c1cd77bfda44601c3808686dbf24e1e");
 
 
-            var response = client.Execute<OxfordDictionaryLookUpResult>(request);
+            var response = client.Execute<OxfordDictionaryLookUpResponse>(request);
+            var wordEntry = _mapper.Map<WordEntry>(response.Data.Results[0]);
 
-
+            return wordEntry;
             return new WordEntry(word)
             {
                 LexicalEntries =

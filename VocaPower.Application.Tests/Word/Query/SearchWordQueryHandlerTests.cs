@@ -1,7 +1,9 @@
 using System.Linq;
+using AutoMapper;
 using Shouldly;
 using VocaPower.Application.Word.Model;
 using VocaPower.Application.Word.Query;
+using VocaPower.Infrastructure.Infrastructure;
 using VocaPower.Infrastructure.OxfordDictionaryApi;
 using Xunit;
 
@@ -9,6 +11,14 @@ namespace VocaPower.Application.Tests.Word.Query
 {
     public class SearchWordQueryHandlerTests
     {
+        public SearchWordQueryHandlerTests()
+        {
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile<InfrastructureProfile>();
+                
+            });
+        }
+        
         [Fact]
         public void SearchWord_WordFound_ResultContainsWordDefinition()
         {
