@@ -85,25 +85,15 @@ namespace VocaPower.Infrastructure.OxfordDictionaryApi
 
 
             var response = client.Execute<OxfordDictionaryLookUpResponse>(request);
-            var wordEntry = _mapper.Map<WordEntry>(response.Data.Results[0]);
+//            var wordEntry = _mapper.Map<WordEntry>(response.Data.Results[0]);
+//
+//            return wordEntry;
+            var wordEntry = new WordEntry(word);
+            response.Data.Results[0].LexicalEntries.ForEach(e => 
+                wordEntry.LexicalEntries.Add(_mapper.Map<LexicalEntry>(e))
+            );
 
             return wordEntry;
-            return new WordEntry(word)
-            {
-                LexicalEntries =
-                {
-                    new Domain.Entities.LexicalEntry(response.Data.Results[0].LexicalEntries[0].LexicalCategory)
-                    {
-                        SenseEntries   =
-                        {
-                            new SenseEntry
-                            {
-                                Definition = response.Data.Results[0].LexicalEntries[0].Entries[0].Senses[0].Definitions[0]
-                            }
-                        }
-                    }
-                }
-            };
         }
     }
 }

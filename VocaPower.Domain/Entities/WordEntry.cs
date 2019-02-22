@@ -20,6 +20,10 @@ namespace VocaPower.Domain.Entities
 
     public class LexicalEntry
     {
+        public LexicalEntry()
+        {
+            
+        }
         public LexicalEntry(string category)
         {
             LexicalCategory = category;
