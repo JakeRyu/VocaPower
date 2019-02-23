@@ -89,9 +89,9 @@ namespace VocaPower.Infrastructure.OxfordDictionaryApi
 //
 //            return wordEntry;
             var wordEntry = new WordEntry(word);
-            response.Data.Results[0].LexicalEntries.ForEach(e => 
-                wordEntry.LexicalEntries.Add(_mapper.Map<LexicalEntry>(e))
-            );
+//
+//                wordEntry.LexicalEntries.Add(_mapper.Map<LexicalEntry>(e))
+//            );
 
             return wordEntry;
         }

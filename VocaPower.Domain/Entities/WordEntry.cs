@@ -29,7 +29,7 @@ namespace VocaPower.Domain.Entities
             LexicalCategory = category;
             SenseEntries = new List<SenseEntry>();
         }
-        public string LexicalCategory { get; }
+        public string LexicalCategory { get; set; }
         public ICollection<SenseEntry> SenseEntries { get; }
     }
 

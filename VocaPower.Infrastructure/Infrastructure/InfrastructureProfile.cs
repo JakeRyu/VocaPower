@@ -9,8 +9,8 @@ namespace VocaPower.Infrastructure.Infrastructure
     {
         public InfrastructureProfile()
         {
-            CreateMap<OxfordDictionaryLookUpResponse.Result, WordEntry>();
-            CreateMap<OxfordDictionaryLookUpResponse.Result.LexicalEntry, LexicalEntry>();
+//            CreateMap<OxfordDictionaryLookUpResponse.Result, WordEntry>();
+//            CreateMap<OxfordDictionaryLookUpResponse.Result.LexicalEntry, LexicalEntry>();
         }
     }
 }
