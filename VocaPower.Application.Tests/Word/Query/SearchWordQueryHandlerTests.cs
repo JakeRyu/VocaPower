@@ -10,22 +10,19 @@ namespace VocaPower.Application.Tests.Word.Query
     public class SearchWordQueryHandlerTests
     {
         [Fact]
-        public void SearchWord_WordFound_ResultContainsWordDefinition()
+        public void SearchAWord_TheWordFound_ResultReturnsWithTheWord()
         {
             var dictionaryApiClient = new OxfordDictionaryApiClient();
-            var sut = new SearchWordQueryHandler(dictionaryApiClient);
-            var request = new SearchWordQuery
+            var sut = new LookUpWordQuery.Handler(dictionaryApiClient);
+            var request = new LookUpWordQuery
             {
                 Word = "ace"
             };
 
-            var result = sut.Handle(request);
+            var response = sut.Handle(request);
 
-            result.ShouldBeOfType<SearchResultModel>();
-            result.WordEntry.Word.ShouldBe("ace");
-            result.WordEntry.LexicalEntries.First()
-                .SenseEntries.First()
-                .Definition.ShouldBe("a playing card with a single spot on it, ranked as the highest card in its suit in most card games");
+            response.ShouldBeOfType<LookUpResponse>();
+            response.results[0].word.ShouldBe(request.Word);
         }
     }
 }
