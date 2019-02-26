@@ -16,7 +16,7 @@ namespace VocaPower.Application.Word.Query
                 _dictionaryService = dictionaryService;
             }
         
-            public LookUpResponse Handle(LookUpWordQuery request)
+            public LookUpResponse Execute(LookUpWordQuery request)
             {
                 return _dictionaryService.LookUp(request.Word);
             }

@@ -19,7 +19,7 @@ namespace VocaPower.Application.Tests.Word.Query
                 Word = "ace"
             };
 
-            var response = sut.Handle(request);
+            var response = sut.Execute(request);
 
             response.ShouldBeOfType<LookUpResponse>();
             response.results[0].word.ShouldBe(request.Word);

@@ -1,5 +1,4 @@
 using VocaPower.Application.Word.Model;
-using VocaPower.Domain.Entities;
 
 namespace VocaPower.Application.Interface
 {

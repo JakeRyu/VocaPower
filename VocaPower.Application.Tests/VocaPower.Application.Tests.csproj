@@ -19,4 +19,8 @@
       <ProjectReference Include="..\VocaPower.Infrastructure\VocaPower.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Word\Command" />
+    </ItemGroup>
+
 </Project>

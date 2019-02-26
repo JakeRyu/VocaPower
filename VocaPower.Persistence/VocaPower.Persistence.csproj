@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VocaPower.Application\VocaPower.Application.csproj" />
+      <ProjectReference Include="..\VocaPower.Domain.Tests\VocaPower.Domain.Tests.csproj" />
+    </ItemGroup>
+
+</Project>
