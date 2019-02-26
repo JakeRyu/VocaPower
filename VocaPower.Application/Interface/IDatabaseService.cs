@@ -1,8 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using VocaPower.Domain.Entity;
+
 namespace VocaPower.Application.Interface
 {
     public interface IDatabaseService
     {
-        // Clean architecture sample 참조
-        
+        DbSet<LookUpHistory> LookUpHistories { get; set; }
+
+        int SaveChanges();
     }
 }
