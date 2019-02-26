@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using VocaPower.Application.Interface;
+using VocaPower.Domain.Entity;
+
 namespace VocaPower.Application.Word.Command
 {
     public class SaveLookUpHistoryCommand
@@ -7,9 +11,23 @@ namespace VocaPower.Application.Word.Command
 
         public class Handler
         {
+            private readonly IDatabaseService _db;
+
+            public Handler(IDatabaseService db)
+            {
+                _db = db;
+            }
             public void Execute(SaveLookUpHistoryCommand command)
             {
-                ILookUpHistoryRepository.Save(command.Word, command.Definition);
+                var newEntry = new LookUpHistory
+                {
+                    Word = command.Word,
+                    Definition = command.Definition
+                };
+                
+                _db.LookUpHistories.Add(newEntry);
+
+                _db.SaveChanges();
             }
         }
     }

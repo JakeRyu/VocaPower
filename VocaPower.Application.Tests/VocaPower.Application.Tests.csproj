@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.2" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
         <PackageReference Include="Shouldly" Version="3.0.2" />
         <PackageReference Include="xunit" Version="2.4.0" />
@@ -17,6 +18,7 @@
       <ProjectReference Include="..\VocaPower.Application\VocaPower.Application.csproj" />
       <ProjectReference Include="..\VocaPower.Domain\VocaPower.Domain.csproj" />
       <ProjectReference Include="..\VocaPower.Infrastructure\VocaPower.Infrastructure.csproj" />
+      <ProjectReference Include="..\VocaPower.Persistence\VocaPower.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
