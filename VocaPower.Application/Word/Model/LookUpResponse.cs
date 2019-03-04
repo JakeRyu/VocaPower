@@ -4,96 +4,96 @@ namespace VocaPower.Application.Word.Model
 {
     public class Metadata
     {
-        public string provider { get; set; }
+        public string Provider { get; set; }
     }
 
     public class GrammaticalFeature
     {
-        public string text { get; set; }
-        public string type { get; set; }
+        public string Text { get; set; }
+        public string Type { get; set; }
     }
 
     public class Note
     {
-        public string text { get; set; }
-        public string type { get; set; }
+        public string Text { get; set; }
+        public string Type { get; set; }
     }
 
     public class Example
     {
-        public string text { get; set; }
+        public string Text { get; set; }
     }
 
     public class ThesaurusLink
     {
-        public string entry_id { get; set; }
-        public string sense_id { get; set; }
+        public string EntryId { get; set; }
+        public string SenseId { get; set; }
     }
 
     public class Subsense
     {
-        public List<string> definitions { get; set; }
-        public List<Example> examples { get; set; }
-        public string id { get; set; }
-        public List<string> short_definitions { get; set; }
-        public List<Note> notes { get; set; }
-        public List<ThesaurusLink> thesaurusLinks { get; set; }
-        public List<string> registers { get; set; }
-        public List<string> domains { get; set; }
+        public List<string> Definitions { get; set; }
+        public List<Example> Examples { get; set; }
+        public string Id { get; set; }
+        public List<string> ShortDefinitions { get; set; }
+        public List<Note> Notes { get; set; }
+        public List<ThesaurusLink> ThesaurusLinks { get; set; }
+        public List<string> Registers { get; set; }
+        public List<string> Domains { get; set; }
     }
 
     public class Sense
     {
-        public List<string> definitions { get; set; }
-        public List<Example> examples { get; set; }
-        public string id { get; set; }
-        public List<Note> notes { get; set; }
-        public List<string> short_definitions { get; set; }
-        public List<Subsense> subsenses { get; set; }
-        public List<ThesaurusLink> thesaurusLinks { get; set; }
-        public List<string> registers { get; set; }
-        public List<string> regions { get; set; }
-        public List<string> domains { get; set; }
+        public List<string> Definitions { get; set; }
+        public List<Example> Examples { get; set; }
+        public string Id { get; set; }
+        public List<Note> Notes { get; set; }
+        public List<string> ShortDefinitions { get; set; }
+        public List<Subsense> Subsenses { get; set; }
+        public List<ThesaurusLink> ThesaurusLinks { get; set; }
+        public List<string> Registers { get; set; }
+        public List<string> Regions { get; set; }
+        public List<string> Domains { get; set; }
     }
 
     public class Entry
     {
-        public List<string> etymologies { get; set; }
-        public List<GrammaticalFeature> grammaticalFeatures { get; set; }
-        public string homographNumber { get; set; }
-        public List<Note> notes { get; set; }
-        public List<Sense> senses { get; set; }
+        public List<string> Etymologies { get; set; }
+        public List<GrammaticalFeature> GrammaticalFeatures { get; set; }
+        public string HomographNumber { get; set; }
+        public List<Note> Notes { get; set; }
+        public List<Sense> Senses { get; set; }
     }
 
     public class Pronunciation
     {
-        public string audioFile { get; set; }
-        public List<string> dialects { get; set; }
-        public string phoneticNotation { get; set; }
-        public string phoneticSpelling { get; set; }
+        public string AudioFile { get; set; }
+        public List<string> Dialects { get; set; }
+        public string PhoneticNotation { get; set; }
+        public string PhoneticSpelling { get; set; }
     }
 
     public class LexicalEntry
     {
-        public List<Entry> entries { get; set; }
-        public string language { get; set; }
-        public string lexicalCategory { get; set; }
-        public List<Pronunciation> pronunciations { get; set; }
-        public string text { get; set; }
+        public List<Entry> Entries { get; set; }
+        public string Language { get; set; }
+        public string LexicalCategory { get; set; }
+        public List<Pronunciation> Pronunciations { get; set; }
+        public string Text { get; set; }
     }
 
     public class Result
     {
-        public string id { get; set; }
-        public string language { get; set; }
-        public List<LexicalEntry> lexicalEntries { get; set; }
-        public string type { get; set; }
-        public string word { get; set; }
+        public string Id { get; set; }
+        public string Language { get; set; }
+        public List<LexicalEntry> LexicalEntries { get; set; }
+        public string Type { get; set; }
+        public string Word { get; set; }
     }
 
     public class LookUpResponse
     {
-        public Metadata metadata { get; set; }
-        public List<Result> results { get; set; }
+        public Metadata Metadata { get; set; }
+        public List<Result> Results { get; set; }
     }
 }
