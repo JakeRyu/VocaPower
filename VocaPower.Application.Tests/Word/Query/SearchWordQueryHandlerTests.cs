@@ -22,7 +22,7 @@ namespace VocaPower.Application.Tests.Word.Query
             var response = sut.Execute(request);
 
             response.ShouldBeOfType<LookUpResponse>();
-            response.results[0].word.ShouldBe(request.Word);
+            response.Results[0].Word.ShouldBe(request.Word);
         }
     }
 }
