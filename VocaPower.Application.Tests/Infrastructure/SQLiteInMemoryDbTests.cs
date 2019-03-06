@@ -2,7 +2,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Shouldly;
-using VocaPower.Domain.Entity;
+using VocaPower.Domain.LookUp;
 using VocaPower.Persistence;
 using Xunit;
 
@@ -19,18 +19,18 @@ namespace VocaPower.Application.Tests.Infrastructure
 
             try
             {
-                var options = new DbContextOptionsBuilder<DatabaseService>()
+                var options = new DbContextOptionsBuilder<EfContext>()
                     .UseSqlite(connection)
                     .Options;
 
                 // Create the schema in the database
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 {
                     context.Database.EnsureCreated();
                 }
 
                 // Run the test against one instance of the context
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 { 
                     var history = new LookUpHistory
                     {
@@ -42,7 +42,7 @@ namespace VocaPower.Application.Tests.Infrastructure
                 }
 
                 // Use a separate instance of the context to verify correct data was saved to database
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 {
                     context.LookUpHistories.Count().ShouldBe(1);
                 }

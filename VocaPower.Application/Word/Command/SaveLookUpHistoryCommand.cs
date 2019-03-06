@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VocaPower.Application.Interface;
-using VocaPower.Domain.Entity;
+using VocaPower.Domain.LookUp;
 
 namespace VocaPower.Application.Word.Command
 {

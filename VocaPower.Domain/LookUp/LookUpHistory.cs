@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using VocaPower.Domain.Users;
 
-namespace VocaPower.Domain.Entity
+namespace VocaPower.Domain.LookUp
 {
     public class LookUpHistory
     {

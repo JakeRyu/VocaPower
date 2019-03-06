@@ -18,17 +18,17 @@ namespace VocaPower.Application.Tests.Word.Command
 
             try
             {
-                var options = new DbContextOptionsBuilder<DatabaseService>()
+                var options = new DbContextOptionsBuilder<EfContext>()
                     .UseSqlite(connection)
                     .Options;
 
                 // Create the schema in the database
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 {
                     context.Database.EnsureCreated();
                 }
 
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 {
                     var command = new SaveLookUpHistoryCommand
                     {
@@ -40,7 +40,7 @@ namespace VocaPower.Application.Tests.Word.Command
                     sut.Execute(command);
                 }
 
-                using (var context = new DatabaseService(options))
+                using (var context = new EfContext(options))
                 {
                     context.LookUpHistories
                         .First(h => h.Word == "ace")
@@ -52,18 +52,18 @@ namespace VocaPower.Application.Tests.Word.Command
                 connection.Close();
             }
 
-            var db = new DatabaseService();
+            var db = new EfContext();
         }
 
 
         [Fact]
         public void Handler_ExcutedWithInMemoryDb_SaveLookUpHistoryEntry()
         {
-            var options = new DbContextOptionsBuilder<DatabaseService>()
+            var options = new DbContextOptionsBuilder<EfContext>()
                 .UseInMemoryDatabase(databaseName: "unique_name")
                 .Options;
 
-            using (var context = new DatabaseService(options))
+            using (var context = new EfContext(options))
             {
                 var command = new SaveLookUpHistoryCommand
                 {
@@ -75,7 +75,7 @@ namespace VocaPower.Application.Tests.Word.Command
                 sut.Execute(command);
             }
 
-            using (var context = new DatabaseService(options))
+            using (var context = new EfContext(options))
             {
                 context.LookUpHistories
                     .First(h => h.Word == "ace")

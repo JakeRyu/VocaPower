@@ -1,4 +1,4 @@
-namespace VocaPower.Domain.Entity
+namespace VocaPower.Domain.Users
 {
     public class AppUser
     {
