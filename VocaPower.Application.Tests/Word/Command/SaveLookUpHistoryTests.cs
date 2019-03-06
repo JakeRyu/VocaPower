@@ -11,7 +11,7 @@ namespace VocaPower.Application.Tests.Word.Command
     public class SaveLookUpHistoryTests
     {
         [Fact]
-        public void Handler_WhenCalled_SaveLookUpHistoryEntry()
+        public void Handler_ExecutedWithSqliteDb_SaveLookUpHistoryEntry()
         {
             var connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -53,7 +53,34 @@ namespace VocaPower.Application.Tests.Word.Command
             }
 
             var db = new DatabaseService();
+        }
+
+
+        [Fact]
+        public void Handler_ExcutedWithInMemoryDb_SaveLookUpHistoryEntry()
+        {
+            var options = new DbContextOptionsBuilder<DatabaseService>()
+                .UseInMemoryDatabase(databaseName: "unique_name")
+                .Options;
+
+            using (var context = new DatabaseService(options))
+            {
+                var command = new SaveLookUpHistoryCommand
+                {
+                    Word = "ace",
+                    Definition = "top card"
+                };
+                var sut = new SaveLookUpHistoryCommand.Handler(context);
             
+                sut.Execute(command);
+            }
+
+            using (var context = new DatabaseService(options))
+            {
+                context.LookUpHistories
+                    .First(h => h.Word == "ace")
+                    .Definition.ShouldBe("top card");
+            }
         }
     }
 }
