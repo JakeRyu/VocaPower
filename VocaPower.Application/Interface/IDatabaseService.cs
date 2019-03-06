@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using VocaPower.Domain.Entity;
+using VocaPower.Domain.LookUp;
 
 namespace VocaPower.Application.Interface
 {

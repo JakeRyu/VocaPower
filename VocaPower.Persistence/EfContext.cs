@@ -1,20 +1,20 @@
 ﻿using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using VocaPower.Application.Interface;
-using VocaPower.Domain.Entity;
+using VocaPower.Domain.LookUp;
 
 namespace VocaPower.Persistence
 {
-    public class DatabaseService : DbContext, IDatabaseService
+    public class EfContext : DbContext, IDatabaseService
     {
         public DbSet<LookUpHistory> LookUpHistories { get; set; }
 
-        public DatabaseService()
+        public EfContext()
         {
             
         }
 
-        public DatabaseService(DbContextOptions<DatabaseService> options) : base(options)
+        public EfContext(DbContextOptions<EfContext> options) : base(options)
         {
             
         }
