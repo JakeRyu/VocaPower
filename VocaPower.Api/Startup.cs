@@ -3,11 +3,13 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VocaPower.Application.Interface;
 using VocaPower.Application.Word.Query;
 using VocaPower.Infrastructure.OxfordDictionaryApi;
+using VocaPower.Persistence;
 
 namespace VocaPower.Api
 {
@@ -24,15 +26,17 @@ namespace VocaPower.Api
         // Set dependencies
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 //
 //            var serviceCollection = new ServiceCollection();
 //            serviceCollection.AddLogging();
 
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton<IDictionaryApiClient>(new OxfordDictionaryApiClient());
             services.AddMediatR(typeof(LookUpWordQuery.Handler).Assembly);
-            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

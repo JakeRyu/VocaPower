@@ -20,18 +20,18 @@ namespace VocaPower.Application.Tests.Infrastructure
 
             try
             {
-                var options = new DbContextOptionsBuilder<EfContext>()
+                var options = new DbContextOptionsBuilder<AppDbContext>()
                     .UseSqlite(connection)
                     .Options;
 
                 // Create the schema in the database
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 {
                     context.Database.EnsureCreated();
                 }
 
                 // Run the test against one instance of the context
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 { 
                     var history = new LookUpHistory
                     {
@@ -44,7 +44,7 @@ namespace VocaPower.Application.Tests.Infrastructure
                 }
 
                 // Use a separate instance of the context to verify correct data was saved to database
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 {
                     context.LookUpHistories.Count().ShouldBe(1);
                 }

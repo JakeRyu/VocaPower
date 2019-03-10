@@ -23,7 +23,6 @@ namespace VocaPower.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> LookUp([FromBody] LookUpWordQuery request)
         {
-//            var request = new LookUpWordQuery {Word = word};
             var response = await _mediator.Send(request);
 
             await _mediator.Publish(new LookUpCalled(response));
