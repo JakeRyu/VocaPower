@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using VocaPower.Application.Word.Query;
 using VocaPower.Infrastructure.OxfordDictionaryApi;
@@ -10,16 +12,18 @@ namespace VocaPower.Api.Controllers
     [ApiController]
     public class WordDefinitionController : ControllerBase
     {
-        [Route("{word}")]
-        [HttpGet]
-        public ActionResult LookUp(string word)
-        {
-            var request = new LookUpWordQuery {Word = word};
-            
-            var handler = new LookUpWordQuery.Handler(new OxfordDictionaryApiClient());
+        private readonly IMediator _mediator;
 
-            var response = handler.Execute(request);
-            
+        public WordDefinitionController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        
+        [HttpGet]
+        public async Task<ActionResult> LookUp([FromBody] LookUpWordQuery request)
+        {
+//            var request = new LookUpWordQuery {Word = word};
+            var response = await _mediator.Send(request);
             
             return new JsonResult(response);
         }
