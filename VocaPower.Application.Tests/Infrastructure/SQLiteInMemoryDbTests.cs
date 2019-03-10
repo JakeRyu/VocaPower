@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Shouldly;
 using VocaPower.Domain.LookUp;
+using VocaPower.Domain.Users;
 using VocaPower.Persistence;
 using Xunit;
 
@@ -35,7 +36,8 @@ namespace VocaPower.Application.Tests.Infrastructure
                     var history = new LookUpHistory
                     {
                         Word = "ace",
-                        Definition = "top card"
+                        Definition = "top card",
+                        User = new AppUser()
                     };
                     context.LookUpHistories.Add(history);
                     context.SaveChanges();

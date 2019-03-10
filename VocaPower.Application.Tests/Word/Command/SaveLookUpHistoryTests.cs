@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
@@ -37,7 +38,7 @@ namespace VocaPower.Application.Tests.Word.Command
                     };
                     var sut = new SaveLookUpHistoryCommand.Handler(context);
             
-                    sut.Execute(command);
+                    sut.Handle(command, CancellationToken.None);
                 }
 
                 using (var context = new EfContext(options))
@@ -68,11 +69,11 @@ namespace VocaPower.Application.Tests.Word.Command
                 var command = new SaveLookUpHistoryCommand
                 {
                     Word = "ace",
-                    Definition = "top card"
+                    Definition = "top card",
                 };
                 var sut = new SaveLookUpHistoryCommand.Handler(context);
             
-                sut.Execute(command);
+                sut.Handle(command, CancellationToken.None);
             }
 
             using (var context = new EfContext(options))

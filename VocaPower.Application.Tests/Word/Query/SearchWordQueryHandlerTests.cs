@@ -1,4 +1,6 @@
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Shouldly;
 using VocaPower.Application.Word.Model;
 using VocaPower.Application.Word.Query;
@@ -10,7 +12,7 @@ namespace VocaPower.Application.Tests.Word.Query
     public class SearchWordQueryHandlerTests
     {
         [Fact]
-        public void SearchAWord_TheWordFound_ResultReturnsWithTheWord()
+        public async Task SearchAWord_TheWordFound_ResultReturnsWithTheWord()
         {
             var dictionaryApiClient = new OxfordDictionaryApiClient();
             var sut = new LookUpWordQuery.Handler(dictionaryApiClient);
@@ -19,7 +21,7 @@ namespace VocaPower.Application.Tests.Word.Query
                 Word = "ace"
             };
 
-            var response = sut.Execute(request);
+            var response = await sut.Handle(request, CancellationToken.None);
 
             response.ShouldBeOfType<LookUpResponse>();
             response.Results[0].Word.ShouldBe(request.Word);

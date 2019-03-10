@@ -7,7 +7,7 @@ namespace VocaPower.Domain.Users
     public class AppUser
     {
         public long Id { get; set; }
-        public Email Email { get; set; }
+//        public Email Email { get; set; }
         public string Username { get; set; }
     }
 
