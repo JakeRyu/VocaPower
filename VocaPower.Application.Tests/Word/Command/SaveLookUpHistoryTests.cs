@@ -4,6 +4,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 using VocaPower.Application.Word.Command;
+using VocaPower.Domain.Users;
 using VocaPower.Persistence;
 using Xunit;
 
@@ -34,7 +35,8 @@ namespace VocaPower.Application.Tests.Word.Command
                     var command = new SaveLookUpHistoryCommand
                     {
                         Word = "ace",
-                        Definition = "top card"
+                        Definition = "top card",
+                        User = new AppUser()
                     };
                     var sut = new SaveLookUpHistoryCommand.Handler(context);
             

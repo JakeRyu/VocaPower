@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using VocaPower.Application.Events;
 using VocaPower.Application.Word.Query;
 using VocaPower.Infrastructure.OxfordDictionaryApi;
 
@@ -24,8 +25,10 @@ namespace VocaPower.Api.Controllers
         {
 //            var request = new LookUpWordQuery {Word = word};
             var response = await _mediator.Send(request);
+
+            await _mediator.Publish(new LookUpCalled(response));
             
-            return new JsonResult(response);
+            return Ok(response);
         }
     }
 }
