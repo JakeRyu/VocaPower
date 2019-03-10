@@ -5,11 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dictionary\Command" />
-      <Folder Include="Dictionary\Query" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\VocaPower.Domain\VocaPower.Domain.csproj" />
     </ItemGroup>
 
