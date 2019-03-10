@@ -20,17 +20,17 @@ namespace VocaPower.Application.Tests.Word.Command
 
             try
             {
-                var options = new DbContextOptionsBuilder<EfContext>()
+                var options = new DbContextOptionsBuilder<AppDbContext>()
                     .UseSqlite(connection)
                     .Options;
 
                 // Create the schema in the database
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 {
                     context.Database.EnsureCreated();
                 }
 
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 {
                     var command = new SaveLookUpHistoryCommand
                     {
@@ -43,7 +43,7 @@ namespace VocaPower.Application.Tests.Word.Command
                     sut.Handle(command, CancellationToken.None);
                 }
 
-                using (var context = new EfContext(options))
+                using (var context = new AppDbContext(options))
                 {
                     context.LookUpHistories
                         .First(h => h.Word == "ace")
@@ -55,18 +55,18 @@ namespace VocaPower.Application.Tests.Word.Command
                 connection.Close();
             }
 
-            var db = new EfContext();
+            var db = new AppDbContext();
         }
 
 
         [Fact]
         public void Handler_ExcutedWithInMemoryDb_SaveLookUpHistoryEntry()
         {
-            var options = new DbContextOptionsBuilder<EfContext>()
+            var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseInMemoryDatabase(databaseName: "unique_name")
                 .Options;
 
-            using (var context = new EfContext(options))
+            using (var context = new AppDbContext(options))
             {
                 var command = new SaveLookUpHistoryCommand
                 {
@@ -78,7 +78,7 @@ namespace VocaPower.Application.Tests.Word.Command
                 sut.Handle(command, CancellationToken.None);
             }
 
-            using (var context = new EfContext(options))
+            using (var context = new AppDbContext(options))
             {
                 context.LookUpHistories
                     .First(h => h.Word == "ace")

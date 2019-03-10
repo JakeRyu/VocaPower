@@ -5,6 +5,7 @@ using MediatR;
 using VocaPower.Application.Interface;
 using VocaPower.Domain.LookUp;
 using VocaPower.Domain.Users;
+using VocaPower.Persistence;
 
 namespace VocaPower.Application.Word.Command
 {
@@ -17,9 +18,9 @@ namespace VocaPower.Application.Word.Command
 
         public class Handler : IRequestHandler<SaveLookUpHistoryCommand>
         {
-            private readonly IDatabaseService _db;
+            private readonly AppDbContext _db;
 
-            public Handler(IDatabaseService db)
+            public Handler(AppDbContext db)
             {
                 _db = db;
             }
