@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocaPower.Api", "VocaPower.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocaPower.Web", "VocaPower.Web\VocaPower.Web.csproj", "{35185D4F-5256-46BA-88E6-7EF891AB57EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocaPower.Api.IntegrationTests", "VocaPower.Api.IntegrationTests\VocaPower.Api.IntegrationTests.csproj", "{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,7 @@ Global
 		{89F03703-F9A5-4258-BE5B-2AFCFDDE002D} = {102C27FE-B504-49CC-9213-1CE459009F8F}
 		{26ED81B8-6BF0-4E08-9514-A204634B4C1D} = {766CDF12-F905-442B-95F3-9FEF747F9D1F}
 		{35185D4F-5256-46BA-88E6-7EF891AB57EF} = {766CDF12-F905-442B-95F3-9FEF747F9D1F}
+		{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F} = {A49ABBEE-2502-420E-B062-FAB962FF849D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D5229BD9-35CF-4119-8AA2-D65F87EBD825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +75,9 @@ Global
 		{35185D4F-5256-46BA-88E6-7EF891AB57EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35185D4F-5256-46BA-88E6-7EF891AB57EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35185D4F-5256-46BA-88E6-7EF891AB57EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0573A63C-2EF7-40FE-96C2-C6B9F2538E4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
