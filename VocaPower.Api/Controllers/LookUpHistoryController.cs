@@ -17,7 +17,7 @@ namespace VocaPower.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             return Ok(await _mediator.Send(new LookUpHistoryQuery()));
         }
