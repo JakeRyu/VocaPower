@@ -22,8 +22,4 @@
       <ProjectReference Include="..\VocaPower.Persistence\VocaPower.Persistence.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Word\Command" />
-    </ItemGroup>
-
 </Project>
