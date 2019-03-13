@@ -15,9 +15,12 @@ namespace VocaPower.Application.Word.Query
             {
                 _db = db;
             }
-            public Task<LookUpHistoryResponse> Handle(LookUpHistoryQuery request, CancellationToken cancellationToken)
+            public async Task<LookUpHistoryResponse> Handle(LookUpHistoryQuery request, CancellationToken cancellationToken)
             {
-                throw new System.NotImplementedException();
+                return new LookUpHistoryResponse
+                {
+                    PlaceHolder = new string[] {"Hello"}
+                };
             }
         }
     }
